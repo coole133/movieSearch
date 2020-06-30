@@ -1,0 +1,13 @@
+.Buttons {
+    margin-left: 50px;
+    display: flex;
+}
+
+.Right {
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

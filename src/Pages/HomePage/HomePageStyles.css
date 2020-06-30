@@ -1,0 +1,21 @@
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . .";
+}
+ ul span {
+   text-align: center;
+   font-size: 22px;
+     color: black
+ }
+
+ li {
+   display: grid;
+ }
+
+ ul {
+   list-style: none;
+   font-family: 'Roboto', sans-serif;
+ }
