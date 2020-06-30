@@ -1,0 +1,13 @@
+.PaginationButtons {
+    margin-left: 50px;
+    display: flex;
+}
+
+.PaginationButtons button:last-of-type {
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

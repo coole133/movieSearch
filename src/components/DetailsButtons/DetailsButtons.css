@@ -1,0 +1,8 @@
+.DetailsButtons {
+    margin-left: 50px;
+    display: flex;
+}
+
+.DetailsButtons button:last-of-type {
+    margin-left: 20px;
+}

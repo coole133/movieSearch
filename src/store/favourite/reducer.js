@@ -4,7 +4,7 @@ const initialState = {
     movieItems: []
 }
 
-const movieReducer = (state = initialState, action) => {
+const favouriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MOVIE_ITEM:
             let updatedItems = [];
@@ -39,4 +39,4 @@ const movieReducer = (state = initialState, action) => {
     }
 }
 
-export default movieReducer;
+export default favouriteReducer;

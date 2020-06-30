@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React  from 'react';
+import HomePage from "./pages/HomePage/HomePage";
+import {Switch  , Route,} from "react-router-dom"
+import NavigationButtons from "./components/NavigationButtons/NavigationButtons";
+import MovieSearchPage from "./pages/MovieSearchPage/MovieSearchPage";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage"
+import Favourite from "./components/FavouritesMovies/Favourites";
+import Login from "./components/LoginButton/Login";
+import "./AppStyles.css"
+import Profile from "./components/Profile/Profile";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+function  App() {
+    return (
+        <div>
+            <nav className="Navigation">
+                <NavigationButtons />
+                <Login />
+                <Profile />
+                <Favourite />
+            </nav>
+            <Switch />
+              <Route exact  path="/" >
+                  <HomePage />
+              </Route>
+            <Route  path="/movies/:movieId">
+                <MovieDetailsPage />
+            </Route>
+            <Route exact path="/movies">
+                <MovieSearchPage />
+            </Route>
+            <Switch />
+        </div>
+    );
+
 }
 
 export default App;

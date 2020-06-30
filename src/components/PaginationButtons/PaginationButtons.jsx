@@ -1,21 +1,32 @@
 import React from "react";
 import { Button } from "@material-ui/core";
+import "./PaginationButtonsStyles.css"
 
-function Pagination() {
+function PaginationButtons(
+    {
+        handlePage,
+        handleBackPage
+    }
+) {
     return (
-        <>
-           <Button onClick={handleBackPage}
-                   variant="contained"
-                   color="secondary">
-                   Previous
-           </Button>
-            <Button onClick={handleBackPage}
-                    variant="contained"
-                    color="secondary">
-                    Next
+        <div className="PaginationButtons">
+            <Button
+                onClick={handleBackPage}
+                variant="contained"
+                color="primary"
+            >
+                Previous
             </Button>
-        </>
+            <Button
+                onClick={handlePage}
+                variant="contained"
+                color="primary"
+            >
+                Next
+            </Button>
+        </div>
     )
 }
 
-export default Pagination
+
+export default PaginationButtons;

@@ -7,8 +7,16 @@ import MoviePoster from '../../components/MoviePoster/MoviePoster';
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
 import DetailsButtons from "../../components/DetailsButtons/DetailsButtons"
+import { Button } from "@material-ui/core";
+import { connect } from "react-redux"
+import { addMovieItem } from "../../store/favourite/actions";
 
-function MovieDetailsPage() {
+function MovieDetailsPage(
+    {
+        addMovieItem,
+        user
+    }
+) {
     const { movieId } = useParams()
     const [movie,setMovie] = useState({})
     const url = `movie/${movieId}?api_key=${apiKey}&language=en-US`
@@ -21,11 +29,32 @@ function MovieDetailsPage() {
             .then(data => setMovie(data))
     }, [url])
 
+    const handleAddItem = () => {
+        const newMovie = {
+            title: movie.title,
+            image: movie.poster_path,
+            id: movie.id
+        }
+        addMovieItem(newMovie)
+    }
+
 
     return (
         <div>
             <h1>{movie.title}</h1>
             <MoviePoster imageUrl={movie.poster_path} />
+            {
+                user
+                    ?  <Button
+                        style={{marginLeft: 188}}
+                        variant="contained"
+                        color="primary"
+                        onClick={handleAddItem}
+                    >
+                        Add to favourites
+                    </Button>
+                    : null
+            }
             <p> Popularity : {movie.popularity}</p>
             <p> Release date : {movie.release_date}</p>
             <p className="overview"> Overview : {movie.overview}</p>
@@ -43,5 +72,16 @@ function MovieDetailsPage() {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMovieItem: (item) => dispatch(addMovieItem(item))
+    }
+}
 
-export default MovieDetailsPage
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.currentUser
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage)

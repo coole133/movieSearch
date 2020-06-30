@@ -1,55 +1,72 @@
-import React from "react";
-import Menu from '@material-ui/core/Menu';
+import React, {useState} from "react";
 import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
 import "./Favourite.css"
+import FavouriteItem from "./FavouriteItem";
 import { connect } from "react-redux"
 
 
-const Favourite = (
+const Favourites = (
     {
-        movieItems
+        movieItems,
+        user
     }
 ) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+    const [opened, setOpened] = useState(false)
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    const handleMenu = () => {
+        setOpened(!opened)
+    }
 
     return (
         <div className="FavMenu">
-            <Button aria-controls="simple-menu" style={{fontSize: 18}} aria-haspopup="true" onClick={handleClick}>
-                Open Menu
-            </Button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                {
-                    movieItems.map((movieItem) => {
-                        return (
-                            <MenuItem key={movieItem.id}>{movieItem.name}</MenuItem>
-                        )
-                    })
-                }
-            </Menu>
+            {
+                user
+                    ? <>
+                        <Button
+                           onClick={handleMenu}
+                           aria-controls="simple-menu"
+                           style={{fontSize: 18}}
+                           aria-haspopup="true" >
+                           Open Menu
+                        </Button>
+                         {
+                           opened
+                                 ?   <div className="arrow">&#8681;</div>
+                                 :    <div className="arrow">&#8679;</div>
+                         }
+                      </>
+                    : null
+            }
+            {
+                opened ?  <div className="MovieList">
+                    {
+                        movieItems.map((movieItem) => {
+                            return (
+                                <FavouriteItem
+                                    handleMenu={handleMenu}
+                                    title={movieItem.title}
+                                    key={movieItem.id}
+                                    id={movieItem.id}
+                                    image={movieItem.image}
+                                    item={movieItem}
+                                />
+                            )
+                        })
+                    }
+                </div>
+                    : null
+            }
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
     return {
-        movieItems: state.movie.movieItems
+        movieItems: state.movie.movieItems,
+        user: state.user.currentUser
     }
 }
 
 
-export default connect(mapStateToProps)(Favourite)
+export default connect(mapStateToProps)(Favourites)

@@ -5,10 +5,11 @@ ul {
   gap: 1px 1px;
   grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . .";
 }
- ul span {
-   text-align: center;
-   font-size: 22px;
-     color: black
+
+ p {
+     text-align: center;
+     font-size: 22px;
+     color: black;
  }
 
  li {

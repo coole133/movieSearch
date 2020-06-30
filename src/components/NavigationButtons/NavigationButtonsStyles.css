@@ -1,9 +1,9 @@
-.Buttons {
+.NavigationButtons {
     margin-left: 50px;
     display: flex;
 }
 
-.Right {
+.NavigationButtons button:last-of-type {
     margin-left: 20px;
 }
 

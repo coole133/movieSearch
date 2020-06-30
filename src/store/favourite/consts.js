@@ -1,0 +1,2 @@
+export const ADD_MOVIE_ITEM = "ADD_MOVIE_ITEM"
+export const REMOVE_MOVIE_ITEM = "REMOVE_MOVIE_ITEM"
