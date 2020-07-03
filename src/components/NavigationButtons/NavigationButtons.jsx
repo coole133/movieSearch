@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "../Button/Button";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./NavigationButtonsStyles.css"
 
-function NavigationButtons() {
+function NavigationButtons({user}) {
     return (
         <div className="NavigationButtons">
             <Button
@@ -18,15 +19,22 @@ function NavigationButtons() {
             >
                 <Link to="/movies">Movies</Link>
             </Button>
-            <Button
-                variant="contained"
-                color="primary"
-            >
-                <Link to="/favourites">Check your favourites</Link>
-            </Button>
+            {
+                user
+                    ?   <Button variant="contained"  color="primary">
+                           <Link to="/favourites">Check your favourites</Link>
+                        </Button>
+                    : null
+            }
         </div>
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.currentUser
+    }
+}
 
-export default NavigationButtons;
+
+export default connect(mapStateToProps, null)(NavigationButtons);
