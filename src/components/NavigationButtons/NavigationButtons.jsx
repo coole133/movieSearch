@@ -18,6 +18,12 @@ function NavigationButtons() {
             >
                 <Link to="/movies">Movies</Link>
             </Button>
+            <Button
+                variant="contained"
+                color="primary"
+            >
+                <Link to="/favourites">Check your favourites</Link>
+            </Button>
         </div>
     )
 }
