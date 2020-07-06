@@ -10,7 +10,7 @@ const favouriteReducer = (state = initialState, action) => {
             let updatedItems = [];
             const isExist = state.movieItems.find((movieItem) => {
                 return movieItem.id === action.payload.id
-        })
+            })
 
             if (isExist) {
                 updatedItems = state.movieItems.map((movieItem) => {
@@ -28,7 +28,7 @@ const favouriteReducer = (state = initialState, action) => {
 
             }
         case REMOVE_MOVIE_ITEM: {
-            const updatedItems = state.movieItems.filter((movieItem) => movieItem.id !== action.payload.id)
+                const updatedItems = state.movieItems.filter((movieItem) => movieItem.id !== action.payload.id)
             return {
                 ...state,
                 movieItems: updatedItems

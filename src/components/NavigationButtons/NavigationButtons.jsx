@@ -1,31 +1,16 @@
 import React from "react";
-import Button from "../Button/Button";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "./NavigationButtonsStyles.css"
+import classes from "./navigationButtons.module.scss"
+import ButtonItem from "../Button/ButtonItem"
 
 function NavigationButtons({user}) {
     return (
-        <div className="NavigationButtons">
-            <Button
-                variant="contained"
-                color="primary"
-            >
-                <Link to="/">Home</Link>
-            </Button>
-            <Button
-                variant="contained"
-                color="primary"
-            >
-                <Link to="/movies">Movies</Link>
-            </Button>
-            {
-                user
-                    ?   <Button variant="contained"  color="primary">
-                           <Link to="/favourites">Check your favourites</Link>
-                        </Button>
-                    : null
-            }
+        <div className={classes.navButtons}>
+            <ButtonItem  link="/" children="home"/>
+            <ButtonItem link="/movies" children="movies"/>
+            <ButtonItem link="/favourites" children="check favourites"/>
+            <ButtonItem link="/signIn" children="sign in"/>
+            <ButtonItem link="/signIn" children="profile"/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { apiKey } from "../../consts";
-import {useParams} from "react-router-dom";
-import "./MovieCastStyles.css"
+import { useParams } from "react-router-dom";
+
 
 function MovieCast() {
     const { movieId } = useParams()
@@ -22,7 +22,7 @@ function MovieCast() {
                 ? <p>No information</p>
                 : cast.map(item => {
                     return (
-                        <div className="character" key={item.cast_id}>
+                        <div key={item.cast_id}>
                             <p>{item.character}</p> <span>---</span>  <p>{item.name}</p>
                         </div>
                     )

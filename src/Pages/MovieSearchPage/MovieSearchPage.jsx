@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Input } from '@material-ui/core';
-import "./MovieSearchPage.css"
 import { apiKey } from "../../consts";
 import PaginationButtons from "../../components/PaginationButtons/PaginationButtons";
 import { fetchData } from '../../utils';
@@ -57,18 +56,15 @@ const MoviePage = () => {
     const hasMovies = requestedMovie.length > 0;
 
     return (
-        <div className="InputBar">
+        <div>
             <p>Find your movie</p>
             <form onSubmit={handleFromSubmit}>
                 <Input placeholder='Search...' onChange={handleInputChange} value={name} />
             </form>
-            {  request && <Loading /> }
-            { request
-                ? null
-                : <Movies movies={requestedMovie} />
-            }
+            { request && <Loading /> }
+            { !request && <Movies movies={requestedMovie} /> }
             {
-                hasMovies  && (
+                hasMovies && (
                     <>
                         <PaginationButtons handlePage={handlePage} handleBackPage={handleBackPage}/>
                         <p>Total pages: {pages}</p>

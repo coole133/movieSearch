@@ -5,20 +5,14 @@ import NavigationButtons from "./components/NavigationButtons/NavigationButtons"
 import MovieSearchPage from "./pages/MovieSearchPage/MovieSearchPage";
 import FavouritesPage from "./pages/FavouritesPage/FavouritesPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage"
-import Favourite from "./components/FavouritesMovies/Favourites";
-import Login from "./components/LoginButton/Login";
-import "./AppStyles.css"
-import Profile from "./components/Profile/Profile";
-
+import Favourite from "./components/FavouritesMovies/FavouriteMenuButton";
 
 
 function  App() {
     return (
         <div>
-            <nav className="Navigation">
+            <nav>
                 <NavigationButtons />
-                <Login />
-                <Profile />
                 <Favourite />
             </nav>
             <Switch />

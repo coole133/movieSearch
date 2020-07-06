@@ -1,32 +1,23 @@
 import React from "react";
-import { Button } from "@material-ui/core";
-import { removeMovieItem } from "../../store/favourite/actions";
-import {connect} from "react-redux";
+import { useDispatch } from "react-redux";
+import classes from "../NavigationButtons/navigationButtons.module.scss"
+import {removeMovieItem} from "../../store/favourite/actions";
 
-const DeleteButton = ({
-                          item,
-                          removeMovieItem
-}) => {
+const DeleteButton = ({ item }) => {
 
-    const handleRemoveMovieItem = () => {
-        removeMovieItem(item)
+    const dispatch = useDispatch();
+
+    const handleRemove = () => {
+        dispatch(removeMovieItem(item))
     }
 
     return (
-        <Button
-            color="primary"
-            onClick={handleRemoveMovieItem}
-            variant="contained">
+        <button
+            className={classes.button}
+            onClick={handleRemove}>
             delete
-        </Button>
-        )
+        </button>
+    )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeMovieItem: (item) => dispatch(removeMovieItem(item))
-    }
-}
-
-
-export  default connect(null, mapDispatchToProps)(DeleteButton)
+export default DeleteButton

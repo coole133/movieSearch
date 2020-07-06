@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import Button from '@material-ui/core/Button';
-import "./Favourite.css"
-import FavouriteItem from "./FavouriteItem";
+import { FavouriteListItems } from "./FavouriteListItems";
 import { connect } from "react-redux"
+import classes from "./favouriteMenuButton.module.scss"
 
 
-const Favourites = (
+const FavouriteMenuButton = (
     {
         movieItems,
         user
@@ -19,14 +19,14 @@ const Favourites = (
     }
 
     return (
-        <div className="FavMenu">
+        <div className={classes.favouriteButton}>
             {
                 user
                     ? <>
                         <Button
                            onClick={handleMenu}
                            aria-controls="simple-menu"
-                           style={{fontSize: 18}}
+                           style={{fontSize: 19}}
                            aria-haspopup="true" >
                            Open Menu
                         </Button>
@@ -39,23 +39,12 @@ const Favourites = (
                     : null
             }
             {
-                opened ?  <div className="MovieList">
-                    {
-                        movieItems.map((movieItem) => {
-                            return (
-                                <FavouriteItem
-                                    handleMenu={handleMenu}
-                                    title={movieItem.title}
-                                    key={movieItem.id}
-                                    id={movieItem.id}
-                                    image={movieItem.image}
-                                    item={movieItem}
-                                />
-                            )
-                        })
-                    }
-                </div>
-                    : null
+                opened && (
+                    <FavouriteListItems
+                        handleMenu={handleMenu}
+                        movieItems={movieItems}
+                    />
+                )
             }
         </div>
     );
@@ -69,4 +58,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(Favourites)
+export default connect(mapStateToProps)(FavouriteMenuButton)

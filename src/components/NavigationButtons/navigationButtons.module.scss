@@ -1,0 +1,27 @@
+.navButtons {
+ display: flex;
+  justify-content: center;
+}
+
+.button {
+ font-size: 22px;
+ background-color: white;
+ margin: 20px;
+ transition-duration: 0.4s;
+ padding: 15px 20px;
+ cursor: pointer;
+ border: 2px solid black;
+}
+
+.button:hover {
+ background-color: black;
+ a {
+  color: white;
+ }
+ color: white;
+}
+
+.button a {
+ text-decoration: none;
+ color: black;
+}

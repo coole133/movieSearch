@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { apiKey } from "../../consts";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function MovieReviews() {
     const { movieId } = useParams()

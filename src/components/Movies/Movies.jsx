@@ -1,5 +1,6 @@
 import React from "react";
 import MoviesItem from './MoviesItem';
+import classes from "./movies.module.scss"
 
 const Movies = (
     {
@@ -7,7 +8,7 @@ const Movies = (
     }
 ) => {
     return (
-        <ul>
+        <div className={classes.movies}>
             {
                 movies.map((movie) => {
                     return (
@@ -20,7 +21,7 @@ const Movies = (
                     );
                 })
             }
-        </ul>
+        </div>
     );
 };
 

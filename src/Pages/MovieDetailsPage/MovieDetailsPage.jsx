@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiKey } from "../../consts";
 import { useParams } from "react-router-dom"
-import "./MovieDetailsPageStyles.css"
 import { fetchData } from '../../utils';
-import MoviePoster from '../../components/MoviePoster/MoviePoster';
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
 import DetailsButtons from "../../components/DetailsButtons/DetailsButtons"
@@ -42,10 +40,10 @@ function MovieDetailsPage(
     return (
         <div>
             <h1>{movie.title}</h1>
-            <MoviePoster imageUrl={movie.poster_path} />
+            <img alt={movie.title} src={"https://image.tmdb.org/t/p/w300" + movie.poster_path} />
             {
-                user
-                    ?  <Button
+                user && (
+                    <Button
                         style={{marginLeft: 188}}
                         variant="contained"
                         color="primary"
@@ -53,11 +51,11 @@ function MovieDetailsPage(
                     >
                         Add to favourites
                     </Button>
-                    : null
+                )
             }
             <p> Popularity : {movie.popularity}</p>
             <p> Release date : {movie.release_date}</p>
-            <p className="overview"> Overview : {movie.overview}</p>
+            <p> Overview : {movie.overview}</p>
             <p> Status : {movie.status}</p>
             <p> Vote : {movie.vote_average}</p>
             <DetailsButtons reviews={reviews} cast={cast} setCast={setCast} setReviews={setReviews} />

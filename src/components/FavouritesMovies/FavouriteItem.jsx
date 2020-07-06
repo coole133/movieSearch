@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom"
-import { connect } from "react-redux";
+import classes from "./favouriteItem.module.scss"
 import DeleteButton from "../Button/DeleteButton";
 
 
@@ -15,7 +15,6 @@ const FavouriteItem = (
     }
 ) => {
 
-
     const history = useHistory()
 
     const handlePush = () => {
@@ -23,17 +22,20 @@ const FavouriteItem = (
         handleMenu()
     }
 
-
     return (
-        <div className="FavMovie" >
-                <p>{title}</p>
-            <div className="align">
-                <img onClick={handlePush} className="smallImage" src={'https://image.tmdb.org/t/p/w300' + image }/>
+        <div className={classes.item}>
+            <p className={classes.title}>{title}</p>
+            <div className={classes.underItem}>
+                <img
+                    className={classes.image}
+                    onClick={handlePush}
+                    alt={title}
+                    src={'https://image.tmdb.org/t/p/w300' + image }
+                />
                 <DeleteButton item={item} />
             </div>
         </div>
     )
 }
 
-
-export  default connect(null, null)(FavouriteItem)
+export  default FavouriteItem

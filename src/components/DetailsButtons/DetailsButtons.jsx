@@ -1,5 +1,4 @@
 import React from "react";
-import "./DetailsButtons.css"
 import { Button } from "@material-ui/core";
 
 
@@ -22,7 +21,7 @@ const  DetailsButtons = (
     }
 
     return (
-        <div className="DetailsButtons">
+        <div>
             <Button
                 onClick={handleReviews}
                 variant="contained"
